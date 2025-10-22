@@ -138,7 +138,7 @@ describe('API Web-larek', () => {
           total: 500,
           items: [productA._id.toString(), productB._id.toString()],
         })
-        .expect(201);
+        .expect(200);
 
       expect(response.body).toHaveProperty('id');
       expect(response.body.total).toBe(500);

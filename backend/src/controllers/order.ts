@@ -46,7 +46,7 @@ const createOrder = async (
       throw new BadRequestError('Total amount does not match the prices of the products');
     }
 
-    res.status(201).json({ id: faker.string.uuid(), total: sum });
+    res.status(200).json({ id: faker.string.uuid(), total: sum });
   } catch (error) {
     if (error instanceof MongooseError.CastError) {
       next(new BadRequestError('Invalid product identifier'));

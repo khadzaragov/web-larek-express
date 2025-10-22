@@ -7,7 +7,6 @@ import routes from './routes';
 import { requestLogger, errorLogger } from './middlewares/logger';
 import errorHandler from './middlewares/errors';
 import { PORT, DB_ADDRESS } from './config';
-import NotFoundError from './errors/NotFoundError';
 
 const app = express();
 
@@ -17,7 +16,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use(routes);
-app.use('*', (_req, _res, next) => next(new NotFoundError('Route not found')));
 
 app.use(errorLogger);
 app.use(errors());

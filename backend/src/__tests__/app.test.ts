@@ -127,6 +127,8 @@ describe('API Web-larek', () => {
         description: 'Write it down',
         price: 200,
       });
+      const productAId = productA.id;
+      const productBId = productB.id;
 
       const response = await request(appInstance)
         .post('/order')
@@ -136,7 +138,7 @@ describe('API Web-larek', () => {
           phone: '+79990000000',
           address: 'Test street',
           total: 500,
-          items: [productA._id.toString(), productB._id.toString()],
+          items: [productAId, productBId],
         })
         .expect(200);
 
@@ -172,6 +174,7 @@ describe('API Web-larek', () => {
         description: 'Testing mismatch',
         price: 400,
       });
+      const productId = product.id;
 
       const response = await request(appInstance)
         .post('/order')
@@ -181,7 +184,7 @@ describe('API Web-larek', () => {
           phone: '+79990000000',
           address: 'Mismatch street',
           total: 100,
-          items: [product._id.toString()],
+          items: [productId],
         })
         .expect(400);
 
